@@ -29,3 +29,6 @@ const getAll = (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 };
+
+app.get('/', getAll);
+app.get('/biodata', getAll);
