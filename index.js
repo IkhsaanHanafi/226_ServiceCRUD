@@ -32,3 +32,19 @@ const getAll = (req, res) => {
 
 app.get('/', getAll);
 app.get('/biodata', getAll);
+
+
+// POST (Tambah Data)
+app.post('/biodata', (req, res) => {
+    const { nama, nim, kelas } = req.body;
+
+    pool.query(
+        'INSERT INTO biodata (nama, nim, kelas) VALUES ($1,$2,$3) RETURNING *',
+        [nama, nim, kelas]
+    )
+        .then(result => res.status(201).json(result.rows[0]))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
+});
