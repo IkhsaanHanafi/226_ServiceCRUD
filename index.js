@@ -29,10 +29,8 @@ const getAll = (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 };
-
 app.get('/', getAll);
 app.get('/biodata', getAll);
-
 
 // POST (Tambah Data)
 app.post('/biodata', (req, res) => {
@@ -48,7 +46,6 @@ app.post('/biodata', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
-
 
 // PUT (Update Data)
 app.put('/biodata/:id', (req, res) => {
@@ -77,7 +74,6 @@ app.put('/biodata/:id', (req, res) => {
         });
 });
 
-
 // DELETE (Hapus Data)
 app.delete('/biodata/:id', (req, res) => {
     const { id } = req.params;
@@ -103,7 +99,6 @@ app.delete('/biodata/:id', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
-
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
